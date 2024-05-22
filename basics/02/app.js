@@ -1,6 +1,10 @@
 const express=require("express");
+//dbConnect.js 모듈로 가져오기
+const dbConnect=require("./config/dbConnect");
 
 const app=express();
+
+dbConnect();//db 접속
 
 app.get("/",(req,res)=>{
   res.send("Hello, Node!");

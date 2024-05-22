@@ -5,6 +5,9 @@ const app=express();//createServer 안해도 express 실행하면 server 생성�
 //router 인스턴스 생성
 const router=express.Router();
 
+//contactController 가져오기
+const {getAllContacts,createContact,getContact,updateContact,deleteContact}=require("../controllers/contactController");
+
 //연락처 가져오기
 // app.get("/contacts",(req,res)=>{
 //   res.send("Contacts Page");
@@ -17,18 +20,24 @@ const router=express.Router();
 // });
 
 //이 경로에 대해 get, post에 대해 각각 처리(router 사용)
-router.route("/contacts").get((req,res)=>{
+router.route("/contacts")
+.get(/*(req,res)=>{
   res.send("Contacts Page");
-}).post((req,res)=>{
-  console.log(req.body);
+}*/
+  //controller 함수 찾아가서 처리
+  getAllContacts
+)
+.post((req,res)=>{
+  // console.log(req.body);
   
-  //js 구조 분해 할당
-  const {name,email,phone}=req.body;
-  if(!name||!email||!phone){
-    return res.send("필수 값이 입력되지 않았습니다.");
-  }
+  // //js 구조 분해 할당
+  // const {name,email,phone}=req.body;
+  // if(!name||!email||!phone){
+  //   return res.send("필수 값이 입력되지 않았습니다.");
+  // }
 
-  res.send("Create Contacts");
+  // res.send("Create Contacts");
+  createContact
 });
 
 // //연락처 1개 가져오기
@@ -48,11 +57,14 @@ router.route("/contacts").get((req,res)=>{
 
 //router 사용
 router.route("/contacts/:id").get((req,res)=>{
-  res.send(`View Contact for ID : ${req.params.id}`);
+  // res.send(`View Contact for ID : ${req.params.id}`);
+  getContact
 }).put((req,res)=>{
-  res.send(`Update Contact for ID: ${req.params.id}`);
+  // res.send(`Update Contact for ID: ${req.params.id}`);
+  updateContact
 }).delete((req,res)=>{
-  res.send(`Delete Contact for ID: ${req.params.id}`);
+  // res.send(`Delete Contact for ID: ${req.params.id}`);
+  deleteContact
 });
 
 //모듈로 변경하기
