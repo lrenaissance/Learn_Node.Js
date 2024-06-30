@@ -2,7 +2,7 @@
 const asyncHandler=require("express-async-handler");
 
 //모델
-//const Contact=require("../models/contactModel");: 에러발생
+const Contact=require("../models/contactModel");//: 에러발생
 
 //get all contacts
 
@@ -32,10 +32,10 @@ const createContact=asyncHandler(async(req,res)=>{
     return res.send("필수 값이 입력되지 않았습니다.");
   }
   //입력한 내용을 추가 : 에러 발생
-  // const contact=await Contact.create({
-  //   name,email,phone
-  // });
-  // res.send("Create Contacts");
+  const contact=await Contact.create({
+    name,email,phone
+  });
+  res.send("Create Contacts");
 });
 
 //Get contact

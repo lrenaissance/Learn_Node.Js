@@ -4,6 +4,11 @@ const dbConnect=require("./config/dbConnect");
 
 const app=express();
 
+// npm i ejs: ejs 설치
+//사용할 엔진 명시. 템플릿 파일들이 어디에 저장되는지 명시.
+//app.set("view engine","ejs");
+//app.set("views","./views");
+
 dbConnect();//db 접속
 
 app.get("/",(req,res)=>{

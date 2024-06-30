@@ -5,7 +5,7 @@ const contactSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,//필수 속성
+      required: true, //필수 속성
     },
     email: {
       type: String,
